@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddBookView: View {
+struct AddBookScreen: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
     
@@ -61,8 +61,8 @@ struct AddBookView: View {
     }
 }
 
-struct AddBookView_Previews: PreviewProvider {
+struct AddBookScreen_Previews: PreviewProvider {
     static var previews: some View {
-        AddBookView()
+        AddBookScreen()
     }
 }

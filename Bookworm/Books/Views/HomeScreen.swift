@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeScreen: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [
         SortDescriptor(\.title),
@@ -54,7 +54,7 @@ struct ContentView: View {
                     }
                 }
                 .sheet(isPresented: $showingAddScreen) {
-                    AddBookView()
+                    AddBookScreen()
                 }
         }
     }
@@ -69,8 +69,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeScreen()
     }
 }
