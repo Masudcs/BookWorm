@@ -29,6 +29,7 @@ struct HomeScreen: View {
                             
                             VStack(alignment: .leading) {
                                 Text(book.title ?? "Unknown Title")
+                                    .foregroundColor(book.rating == 1 ? Color.red : .primary)
                                     .font(.headline)
                                 
                                 Text(book.author ?? "Unknown Author")

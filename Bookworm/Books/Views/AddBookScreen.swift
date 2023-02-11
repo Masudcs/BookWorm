@@ -17,7 +17,7 @@ struct AddBookScreen: View {
     @State private var genre = ""
     @State private var review = ""
     
-    let genres = ["Fantasy", "Horro", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
+    let genres = ["Fantasy", "Horro", "Kids", "Mystery", "Poetry", "Romance", "Thriller", "Unknown"]
     
     var body: some View {
         NavigationView {
@@ -53,11 +53,36 @@ struct AddBookScreen: View {
                         
                         try? moc.save()
                         dismiss()
-                    }
+                    }.disabled(formValidation())
                 }
             }
             .navigationTitle("Add Book")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
+
+                }
+            }
         }
+    }
+    
+    func formValidation() -> Bool {
+        if self.title.isReallyEmpty || self.author.isReallyEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+extension String {
+    var isReallyEmpty: Bool {
+        return self.trimmingCharacters(in: .whitespaces).isEmpty
     }
 }
 
